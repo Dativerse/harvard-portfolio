@@ -43,8 +43,9 @@ function ResumeContent() {
   const [viewMode, setViewMode] = useState<ViewMode>("web");
 
   const currentData = resumes[cvType];
-  const pdfSrc = `/api/resume/pdf?cvType=${encodeURIComponent(cvType)}`;
-  const downloadHref = `${pdfSrc}&download=1`;
+  // Static export pre-renders one PDF per known `cvType` (see
+  // app/api/resume/pdf/[cvType]/route.tsx) — no query-driven server logic.
+  const pdfSrc = `/api/resume/pdf/${encodeURIComponent(cvType)}`;
   const downloadFilename = `Resume_${cvType}_${currentData.personal.name.replace(/\s+/g, "_")}.pdf`;
 
   const handleTypeChange = (typeId: string) => {
@@ -101,7 +102,7 @@ function ResumeContent() {
         </div>
 
         <a
-          href={downloadHref}
+          href={pdfSrc}
           download={downloadFilename}
           className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-mono text-sm"
         >
