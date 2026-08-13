@@ -1,9 +1,7 @@
 # harvard-portfolio
 
 A standalone Next.js (App Router) implementation of the resume-display
-feature, ported from
-[khanh-porfolio](https://github.com/Dativerse/khanh-porfolio)'s
-`ResumeHTML` / `ResumePDF` components.
+feature.
 
 ## What's here
 
